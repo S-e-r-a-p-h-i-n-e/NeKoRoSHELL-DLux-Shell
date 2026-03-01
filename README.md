@@ -31,48 +31,6 @@ Powered by Hyprland and Quickshell, **NeKoRoSHELL DLux** aims strives to achieve
 </div>
 <br>
 
-## Features
-
-NeKoRoSHELL DLux focuses on simplicity and modularity.
-<br>
-
-The following are what NeKoRoSHELL DLux currently offers:
-- **Portable and Distro-agnostic**
-  - Use NeKoRoSHELL DLux in any **supported** distro!
-  - Init-agnostic.
-  - XDG-compliant.
-  - Features an advanced installer script.
-    - Use `git clone https://github.com/NeKoRoSYS/NeKoRoSHELL DLux`
-    - Then `cd NeKoRoSHELL DLux`
-    - and finally, `bash install.sh` to install the dotfiles.
-    - `install.sh` assumes you already have `git` and a distro-specific `g++` compiler.
-    - `install.sh` requires you to have `cargo`, `paru`/`yay`, `go`, and `flatpak`.
-    - You can freely customize `flatpak.txt` and `pkglist-DISTRO.txt` before running `install.sh`.
-    - **The installer is safe.** It backs up your pre-existing .config folders. (If you have any)
-    - The installer automatically handles assigning your monitors at `~/.config/hypr/configs/monitors.conf/` and replaces every occurence of `/home/nekorosys/` with your username for your own convenience.
-    - SOME distros don't have hyprland or other dependencies on their package manager's repository and you may have to manually build them from source via script or something else.
-
-- **NeKoRoSHELL DLux as a Service**
-  - Update your copy of NeKoRoSHELL DLux simply by running the `NeKoRoSHELL DLux update` command on your terminal.
-  - Uses Vim or your preferred text editor to assist in reviewing file updates and gives the ability to overwrite, keep, and merge.
-<br>
-
-![Screenshot](showcase/image-5.png) 
-<br>
-<br>
-<br>
-![Screenshot](showcase/image-3.png) 
-<br>
-<br>
-<br>
-![Screenshot](showcase/image-1.png) 
-<br>
-<br>
-<br>
-![Screenshot](showcase/image-2.png) 
-<br>
-<br>
-
 ### Roadmap
 
 NeKoRoSHELL DLux is currently being developed by one person (*cough* [CONTRIBUTING](https://github.com/NeKoRoSYS/NeKoRoSHELL-DLux-Shell/tree/main?tab=contributing-ov-file#) *cough*) and is constantly under rigorous quality assurance for improvement. We always aim to keep a "no-break" promise for every update so that you can safely update to later versions without expecting any breakages.
