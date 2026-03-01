@@ -1,9 +1,4 @@
 <div align="center">
-
-![Screenshot](showcase/image.png) 
-<br>
-<br>
-
 # NeKoRoSHELL DLux 
 
 ![GitHub Repo stars](https://img.shields.io/github/stars/NeKoRoSYS/NeKoRoSHELL-DLux-Shell?style=for-the-badge&color=%23FFD700)
