@@ -46,24 +46,6 @@ NeKoRoSHELL DLux is currently being developed by one person (*cough* [CONTRIBUTI
 </div>
 <br>
 
-## Dependencies
-
-> [!CAUTION]
-> **HARDWARE SPECIFIC CONFIGURATION**<br>
->
-> Some environment variables and params at `~/.config/hypr/configs/environment.conf/` and `~/.config/hypr/scripts/set-wallpaper.sh/` (also check the `check-video.sh` script, `mpvpaper` uses a "hwdec=nvdec" param) **require an NVIDIA graphics card**. Although it may be generally safe to leave it as is upon installing to a machine without such GPU, I recommend commenting it out or replacing it with a variable that goes according to your GPU.
-
-> [!WARNING]
-> **SOFTWARE SPECIFIC CONFIGURATION**<br>
->
-> This project of mine was originally built only for Arch Linux but is now capable of claiming itself to be Distro-agnostic. However, **installation of this repo in other Linux Distros aside from Arch is more or less UNTESTED.** Please verify using `nano` or your preferred text editor if your distro supports the packages listed at `pkglist-DISTRO.txt` or if the packages are named correctly.
->
-> The installation system that I implemented can be improved. If you're willing to help, please make a pull request. Your contributions are welcome and will be appreciated! :D
-
-- `NeKoRoSHELL DLux update` may use Vim to compare, overwrite, or merge files when updating.
-- Requires `quickshell-git` to function.
-<br>
-
 ## Star History
 <br>
 
