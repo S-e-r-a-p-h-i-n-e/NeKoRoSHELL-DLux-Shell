@@ -4,10 +4,10 @@
 <br>
 <br>
 
-# NeKoRoSHELL DLUX 
+# NeKoRoSHELL DLux 
 
-![GitHub Repo stars](https://img.shields.io/github/stars/NeKoRoSYS/NeKoRoSHELL-DLUX?style=for-the-badge&color=%23FFD700)
- ![GitHub Release](https://img.shields.io/github/v/release/NeKoRoSYS/NeKoRoSHELL-DLUX?display_name=tag&style=for-the-badge) ![Size](https://img.shields.io/github/repo-size/NeKoRoSYS/NeKoRoSHELL-DLUX?style=for-the-badge) ![GitHub last commit](https://img.shields.io/github/last-commit/NeKoRoSYS/NeKoRoSHELL-DLUX?style=for-the-badge) ![GitHub contributors](https://img.shields.io/github/contributors/NeKoRoSYS/NeKoRoSHELL-DLUX?style=for-the-badge) ![Discord](https://img.shields.io/discord/774473787394752532?style=for-the-badge&label=Discord&color=%235865F2)
+![GitHub Repo stars](https://img.shields.io/github/stars/NeKoRoSYS/NeKoRoSHELL-DLux-Shell?style=for-the-badge&color=%23FFD700)
+ ![GitHub Release](https://img.shields.io/github/v/release/NeKoRoSYS/NeKoRoSHELL-DLux-Shell?display_name=tag&style=for-the-badge) ![Size](https://img.shields.io/github/repo-size/NeKoRoSYS/NeKoRoSHELL-DLux-Shell?style=for-the-badge) ![GitHub last commit](https://img.shields.io/github/last-commit/NeKoRoSYS/NeKoRoSHELL-DLux-Shell?style=for-the-badge) ![GitHub contributors](https://img.shields.io/github/contributors/NeKoRoSYS/NeKoRoSHELL-DLux-Shell?style=for-the-badge) ![Discord](https://img.shields.io/discord/774473787394752532?style=for-the-badge&label=Discord&color=%235865F2)
  <br>
  <br>
 
@@ -15,7 +15,7 @@
 
 The best way to say "I use Linux btw 🤓" is if your desktop environment looks sleek and suave.
 
-Powered by Hyprland, this project does not define itself as "just a rice." **NeKoRoSHELL DLUX** aims to provide an out-of-the-box, clean and reliable, generic, and modular framework that lets you easily customize your desktop experience with simple UI design philosophy in mind.
+Powered by Hyprland, this project does not define itself as "just a rice." **NeKoRoSHELL DLux** aims to provide an out-of-the-box, clean and reliable, generic, and modular framework that lets you easily customize your desktop experience with simple UI design philosophy in mind.
 <br>
 <br>
 
@@ -31,17 +31,17 @@ Powered by Hyprland, this project does not define itself as "just a rice." **NeK
 
 ## Features
 
-NeKoRoSHELL DLUX focuses on simplicity and modularity.
+NeKoRoSHELL DLux focuses on simplicity and modularity.
 <br>
 
-The following are what NeKoRoSHELL DLUX currently offers:
+The following are what NeKoRoSHELL DLux currently offers:
 - **Portable and Distro-agnostic**
-  - Use NeKoRoSHELL DLUX in any **supported** distro!
+  - Use NeKoRoSHELL DLux in any **supported** distro!
   - Init-agnostic.
   - XDG-compliant.
   - Features an advanced installer script.
-    - Use `git clone https://github.com/NeKoRoSYS/NeKoRoSHELL DLUX`
-    - Then `cd NeKoRoSHELL DLUX`
+    - Use `git clone https://github.com/NeKoRoSYS/NeKoRoSHELL DLux`
+    - Then `cd NeKoRoSHELL DLux`
     - and finally, `bash install.sh` to install the dotfiles.
     - `install.sh` assumes you already have `git` and a distro-specific `g++` compiler.
     - `install.sh` requires you to have `cargo`, `paru`/`yay`, `go`, and `flatpak`.
@@ -50,8 +50,8 @@ The following are what NeKoRoSHELL DLUX currently offers:
     - The installer automatically handles assigning your monitors at `~/.config/hypr/configs/monitors.conf/` and replaces every occurence of `/home/nekorosys/` with your username for your own convenience.
     - SOME distros don't have hyprland or other dependencies on their package manager's repository and you may have to manually build them from source via script or something else.
 
-- **NeKoRoSHELL DLUX as a Service**
-  - Update your copy of NeKoRoSHELL DLUX simply by running the `NeKoRoSHELL DLUX update` command on your terminal.
+- **NeKoRoSHELL DLux as a Service**
+  - Update your copy of NeKoRoSHELL DLux simply by running the `NeKoRoSHELL DLux update` command on your terminal.
   - Uses Vim or your preferred text editor to assist in reviewing file updates and gives the ability to overwrite, keep, and merge.
 <br>
 
@@ -73,7 +73,7 @@ The following are what NeKoRoSHELL DLUX currently offers:
 
 ### Roadmap
 
-NeKoRoSHELL DLUX is currently being developed by one person (*cough* [CONTRIBUTING](https://github.com/NeKoRoSYS/NeKoRoSHELL-DLUX/tree/main?tab=contributing-ov-file#) *cough*) and is constantly under rigorous quality assurance for improvement. We always aim to keep a "no-break" promise for every update so that you can safely update to later versions without expecting any breakages.
+NeKoRoSHELL DLux is currently being developed by one person (*cough* [CONTRIBUTING](https://github.com/NeKoRoSYS/NeKoRoSHELL-DLux-Shell/tree/main?tab=contributing-ov-file#) *cough*) and is constantly under rigorous quality assurance for improvement. We always aim to keep a "no-break" promise for every update so that you can safely update to later versions without expecting any breakages.
 
 <br>
 <div align="center">
@@ -100,7 +100,7 @@ NeKoRoSHELL DLUX is currently being developed by one person (*cough* [CONTRIBUTI
 >
 > The installation system that I implemented can be improved. If you're willing to help, please make a pull request. Your contributions are welcome and will be appreciated! :D
 
-- `NeKoRoSHELL DLUX update` may use Vim to compare, overwrite, or merge files when updating.
+- `NeKoRoSHELL DLux update` may use Vim to compare, overwrite, or merge files when updating.
 - Requires `quickshell-git` to function.
 <br>
 
@@ -108,11 +108,11 @@ NeKoRoSHELL DLUX is currently being developed by one person (*cough* [CONTRIBUTI
 <br>
 
 <div align="center">
-<a href="https://www.star-history.com/#nekorosys/NeKoRoSHELL-DLUX&type=date&legend=bottom-right">
+<a href="https://www.star-history.com/#nekorosys/NeKoRoSHELL-DLux-Shell&type=date&legend=bottom-right">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=nekorosys/NeKoRoSHELL-DLUX&type=date&theme=dark&legend=bottom-right" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=nekorosys/NeKoRoSHELL-DLUX&type=date&legend=bottom-right" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=nekorosys/NeKoRoSHELL-DLUX&type=date&legend=bottom-right" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=nekorosys/NeKoRoSHELL-DLux-Shell&type=date&theme=dark&legend=bottom-right" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=nekorosys/NeKoRoSHELL-DLux-Shell&type=date&legend=bottom-right" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=nekorosys/NeKoRoSHELL-DLux-Shell&type=date&legend=bottom-right" />
  </picture>
 </a>
 </div>
