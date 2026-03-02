@@ -7,6 +7,7 @@ import "../shared"
 
 Scope {
     id: border
+    property bool enabled: true
     property string location
     property real borderWidth
     property real cornerRadius
@@ -23,7 +24,7 @@ Scope {
                 anchors { top: true; left: true; right: true }
                 implicitHeight: border.borderWidth
                 color: border.borderColor
-                visible: border.location !== "top"
+                visible: enabled && border.location !== "top"
             }
 
             PanelWindow {
@@ -31,7 +32,7 @@ Scope {
                 anchors { top: true; left: true; bottom: true }
                 implicitWidth: border.borderWidth
                 color: border.borderColor
-                visible: border.location !== "left"
+                visible: enabled && border.location !== "left"
             }
 
             PanelWindow {
@@ -39,7 +40,7 @@ Scope {
                 anchors { bottom: true; left: true; right: true }
                 implicitHeight: border.borderWidth
                 color: border.borderColor
-                visible: border.location !== "bottom"
+                visible: enabled && border.location !== "bottom"
             }
 
             PanelWindow {
@@ -47,7 +48,7 @@ Scope {
                 anchors { top: true; right: true; bottom: true }
                 implicitWidth: border.borderWidth
                 color: border.borderColor
-                visible: border.location !== "right"
+                visible: enabled && border.location !== "right"
             }
 
             PanelWindow {
@@ -56,6 +57,7 @@ Scope {
                 implicitHeight: border.cornerRadius
                 implicitWidth: border.cornerRadius
                 color: "transparent"
+                visible: enabled
                 
                 Shape {
                     width: border.cornerRadius
@@ -78,6 +80,7 @@ Scope {
                 implicitHeight: border.cornerRadius
                 implicitWidth: border.cornerRadius
                 color: "transparent"
+                visible: enabled
                 
                 Shape {
                     width: border.cornerRadius
@@ -100,6 +103,7 @@ Scope {
                 implicitHeight: border.cornerRadius
                 implicitWidth: border.cornerRadius
                 color: "transparent"
+                visible: enabled
                 
                 Shape {
                     width: border.cornerRadius
@@ -122,6 +126,7 @@ Scope {
                 implicitHeight: border.cornerRadius
                 implicitWidth: border.cornerRadius
                 color: "transparent"
+                visible: enabled
                 
                 Shape {
                     width: border.cornerRadius

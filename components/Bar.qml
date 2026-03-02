@@ -7,12 +7,13 @@ import "widgets"
 
 Scope {
     id: navbar
+    property string appearance
+    property string behavior: "static"
+    property string location: "top"
     property color barColor
     property real barSize
-    property real fontSize
     property string font: "JetBrainsMono Nerd Font"
-    property string appearance
-    property string location: "top"
+    property real fontSize
     readonly property bool isHorizontal: location === "top" || location === "bottom"
     readonly property bool isVertical: location === "left" || location === "right"
 

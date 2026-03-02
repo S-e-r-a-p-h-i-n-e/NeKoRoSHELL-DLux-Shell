@@ -52,7 +52,7 @@ Scope {
 
                         Button {
                             anchors { top: parent.top; horizontalCenter: parent.horizontalCenter }
-                            labelText: "󰁝" // Nerd Font Up Arrow
+                            labelText: "󰁝"
                             labelFont: "JetBrainsMono Nerd Font"
                             buttonSize: 45
                             buttonColor: Colors.color7
@@ -60,7 +60,7 @@ Scope {
                         }
                         Button {
                             anchors { bottom: parent.bottom; horizontalCenter: parent.horizontalCenter }
-                            labelText: "󰁅" // Down Arrow
+                            labelText: "󰁅"
                             labelFont: "JetBrainsMono Nerd Font"
                             buttonSize: 45
                             buttonColor: Colors.color7
@@ -68,7 +68,7 @@ Scope {
                         }
                         Button {
                             anchors { left: parent.left; verticalCenter: parent.verticalCenter }
-                            labelText: "󰁍" // Left Arrow
+                            labelText: "󰁍"
                             labelFont: "JetBrainsMono Nerd Font"
                             buttonSize: 45
                             buttonColor: Colors.color7
@@ -76,7 +76,7 @@ Scope {
                         }
                         Button {
                             anchors { right: parent.right; verticalCenter: parent.verticalCenter }
-                            labelText: "󰁔" // Right Arrow
+                            labelText: "󰁔"
                             labelFont: "JetBrainsMono Nerd Font"
                             buttonSize: 45
                             buttonColor: Colors.color7

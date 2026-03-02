@@ -1,4 +1,5 @@
 import QtQuick
+import Quickshell
 import ".."
 import "../../shared"
 
@@ -20,7 +21,9 @@ Grid {
         buttonSize: (isSide ? parent.parent.width : parent.parent.height) / 1.65
         buttonColor: Colors.color7
         onButtonClicked: {
-            console.log("Test")
+            Quickshell.execDetached({
+                command: ["swaync-client", "-t"]
+            })
         }
     }
 
@@ -40,7 +43,9 @@ Grid {
         buttonSize: (isSide ? parent.parent.width : parent.parent.height) / 1.65
         buttonColor: Colors.color7
         onButtonClicked: {
-            console.log("Test")
+            Quickshell.execDetached({
+                command: ["wlogout"]
+            })
         }
     }
 }

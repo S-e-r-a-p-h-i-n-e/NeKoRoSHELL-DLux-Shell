@@ -1,6 +1,5 @@
 import Quickshell
 import "../components"
-import "../components/widgets"
 import "../shared"
 
 Scope {
@@ -13,22 +12,23 @@ Scope {
 
     property bool isPanelOpen: false
 
-    Bar {
-        location: root.navbarLocation
-        barColor: Colors.background
-        barSize: root.navbarSize
-        fontSize: root.fontSize
-
-        onToggleSettingsPanel: {
-            root.isPanelOpen = !root.isPanelOpen
-        }
-    }
-
     ScreenBorder {
+        enabled: true
         location: root.navbarLocation
         borderColor: Colors.background
         borderWidth: root.borderWidth
         cornerRadius: root.cornerRadius
+
+        Bar {
+            location: root.navbarLocation
+            barColor: Colors.background
+            barSize: root.navbarSize
+            fontSize: root.fontSize
+
+            onToggleSettingsPanel: {
+                root.isPanelOpen = !root.isPanelOpen
+            }
+        }
     }
 
     PositionPanel {
