@@ -9,7 +9,7 @@ Item {
     property alias clockFont: label.font.family
     property alias clockSize: label.font.pixelSize
 
-    readonly property bool isSide: location === "left" || location === "right"
+    readonly property bool isSide: !navbar.isHorizontal
 
     implicitWidth: isSide ? (label.implicitHeight + 30) : (label.implicitWidth + 30)
     implicitHeight: isSide ? (label.implicitWidth + 30) : (label.implicitHeight + 30)

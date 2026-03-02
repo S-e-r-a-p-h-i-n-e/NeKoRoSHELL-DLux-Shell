@@ -7,7 +7,7 @@ import "../../components"
 ListView {
     id: root
     
-    readonly property bool isSide: navbar.isVertical
+    readonly property bool isSide: !navbar.isHorizontal
     orientation: isSide ? ListView.Vertical : ListView.Horizontal
     spacing: 13
     

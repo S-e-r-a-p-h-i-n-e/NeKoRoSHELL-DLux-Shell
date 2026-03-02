@@ -7,7 +7,7 @@ Grid {
     id: root
     spacing: 13
     
-    readonly property bool isSide: navbar.isVertical
+    readonly property bool isSide: !navbar.isHorizontal
 
     signal toggleSettingsPanel()
 
