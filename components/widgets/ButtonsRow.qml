@@ -6,8 +6,8 @@ Grid {
     id: root
     spacing: 13
     
-    readonly property bool isSide: navbar.location === "left" || navbar.location === "right"
-    
+    readonly property bool isSide: navbar.isVertical
+
     columns: isSide ? 1 : 0
     rows: isSide ? 0 : 1
 
@@ -28,6 +28,9 @@ Grid {
         labelFont: navbar.font
         buttonSize: (isSide ? parent.parent.width : parent.parent.height) / 1.65
         buttonColor: Colors.color7
+        onButtonClicked: {
+            console.log("Test")
+        }
     }
 
     Button {
@@ -36,6 +39,9 @@ Grid {
         labelFont: navbar.font
         buttonSize: (isSide ? parent.parent.width : parent.parent.height) / 1.65
         buttonColor: Colors.color7
+        onButtonClicked: {
+            console.log("Test")
+        }
     }
 
     Button {
@@ -44,5 +50,8 @@ Grid {
         labelFont: navbar.font
         buttonSize: (isSide ? parent.parent.width : parent.parent.height) / 1.65
         buttonColor: Colors.color7
+        onButtonClicked: {
+            console.log("Test")
+        }
     }
 }

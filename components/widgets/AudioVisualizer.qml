@@ -4,12 +4,12 @@ import Quickshell.Hyprland
 import Quickshell.Io
 import QtQuick
 import QtQuick.Effects
-import "../shared"
+import "../../shared"
 
 PanelWindow {
     id: panelWindow
     implicitHeight: 200
-    visible: false
+    property bool visible
     color: "transparent"
     WlrLayershell.layer: WlrLayer.Background
     exclusionMode: ExclusionMode.Normal
@@ -70,20 +70,25 @@ EOF
        
         stdout: SplitParser {
             onRead: data => {
-                let newPoints = data.split(";")
-                    .map(p => parseFloat(p.trim()) / 1000)
-                    .filter(p => !isNaN(p));
+                let rawStrings = data.split(";");
+                if (rawStrings.length < 2) return;
+
                 let smoothFactor = 0.3; 
-                if (canvas.cavaData.length === 0 || canvas.cavaData.length !== newPoints.length) {
-                    canvas.cavaData = newPoints;
-                } else {
-                    let smoothed = [];
-                    for (let i = 0; i < newPoints.length; i++) {
-                        let oldVal = canvas.cavaData[i];
-                        let newVal = newPoints[i];
-                        smoothed.push(oldVal + (newVal - oldVal) * smoothFactor);
+                
+                if (canvas.cavaData.length !== rawStrings.length - 1) {
+                    let initArr = new Array(rawStrings.length - 1);
+                    for (let i = 0; i < rawStrings.length - 1; i++) {
+                        let val = parseFloat(rawStrings[i].trim()) / 1000;
+                        initArr[i] = isNaN(val) ? 0 : val;
                     }
-                    canvas.cavaData = smoothed;
+                    canvas.cavaData = initArr;
+                } else {
+                    for (let i = 0; i < rawStrings.length - 1; i++) {
+                        let newVal = parseFloat(rawStrings[i].trim()) / 1000;
+                        if (!isNaN(newVal)) {
+                            canvas.cavaData[i] += (newVal - canvas.cavaData[i]) * smoothFactor;
+                        }
+                    }
                 }
                 
                 canvas.requestPaint();

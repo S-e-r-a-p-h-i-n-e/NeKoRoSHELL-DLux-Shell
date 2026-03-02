@@ -1,5 +1,6 @@
 import Quickshell
 import "../components"
+import "../components/widgets"
 import "../shared"
 
 Scope {
@@ -7,7 +8,7 @@ Scope {
     property string navbarLocation: "top"
     property real navbarSize: 35
     property real fontSize: 12
-    property real borderWidth: 13
+    property real borderWidth: 10
     property real cornerRadius: 20
 
     Bar {
@@ -24,5 +25,7 @@ Scope {
         cornerRadius: root.cornerRadius
     }
     
-    AudioVisualizer {}
+    AudioVisualizer {
+        visible: false
+    }
 }

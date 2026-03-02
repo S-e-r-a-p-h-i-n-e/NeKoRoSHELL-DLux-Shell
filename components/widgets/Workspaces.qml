@@ -2,11 +2,12 @@
 import QtQuick
 import Quickshell.Hyprland
 import "../../shared"
+import "../../components"
 
 ListView {
     id: root
     
-    readonly property bool isSide: navbar.location === "left" || navbar.location === "right"
+    readonly property bool isSide: navbar.isVertical
     orientation: isSide ? ListView.Vertical : ListView.Horizontal
     spacing: 13
     
@@ -34,7 +35,7 @@ ListView {
         Text {
             id: label
             anchors.centerIn: parent
-            text: modelData.focused ? "  " : modelData.name
+            text: modelData.focused ? "󰣇" : modelData.name
             color: modelData.focused ? Colors.background : Colors.foreground
             font.family: "JetBrainsMono Nerd Font"
             font.pixelSize: 12

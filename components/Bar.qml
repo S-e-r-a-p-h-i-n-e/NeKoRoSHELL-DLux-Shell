@@ -13,6 +13,8 @@ Scope {
     property string font: "JetBrainsMono Nerd Font"
     property string appearance
     property string location: "top"
+    readonly property bool isHorizontal: location === "top" || location === "bottom"
+    readonly property bool isVertical: location === "left" || location === "right"
 
     Variants {
         model: Quickshell.screens
@@ -29,17 +31,17 @@ Scope {
                 right:  navbar.location !== "left"
             }
 
-            implicitHeight: (navbar.location === "top" || navbar.location === "bottom") ? navbar.barSize : undefined
-            implicitWidth: (navbar.location === "left" || navbar.location === "right") ? navbar.barSize : undefined
+            implicitHeight: navbar.isHorizontal ? navbar.barSize : undefined
+            implicitWidth: navbar.isVertical ? navbar.barSize : undefined
 
            Workspaces {
                 anchors {
-                    left: (navbar.location === "top" || navbar.location === "bottom") ? parent.left : undefined
-                    leftMargin: (navbar.location === "top" || navbar.location === "bottom") ? 35 : 0
-                    bottom: (navbar.location === "left" || navbar.location === "right") ? parent.bottom : undefined
-                    bottomMargin: (navbar.location === "left" || navbar.location === "right") ? 35 : 0
-                    verticalCenter: (left !== undefined) ? parent.verticalCenter : undefined
-                    horizontalCenter: (bottom !== undefined) ? parent.horizontalCenter : undefined
+                    left: navbar.isHorizontal ? parent.left : undefined
+                    leftMargin: navbar.isHorizontal ? 35 : 0
+                    top: navbar.isVertical ? parent.top : undefined
+                    topMargin: navbar.isVertical ? 35 : 0
+                    verticalCenter: navbar.isHorizontal ? parent.verticalCenter : undefined
+                    horizontalCenter: navbar.isVertical ? parent.horizontalCenter : undefined
                 }
             }
 

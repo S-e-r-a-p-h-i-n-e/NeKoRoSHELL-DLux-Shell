@@ -2,6 +2,7 @@ import QtQuick
 
 Rectangle {
     id: root
+    signal buttonClicked()
     property string labelText
     property string labelFont
     property real buttonSize: parent.height / 1.65
@@ -25,5 +26,6 @@ Rectangle {
         id: mouseArea
         anchors.fill: parent
         cursorShape: Qt.PointingHandCursor
+        onClicked: root.buttonClicked()
     }
 }
