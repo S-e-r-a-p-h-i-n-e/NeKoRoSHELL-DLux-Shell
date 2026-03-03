@@ -3,7 +3,7 @@ import QtQuick
 import qs.shared
 
 Item {
-    id: clockRoot
+    id: root
     
     property string location: "top"
     property alias clockFont: label.font.family
@@ -18,19 +18,19 @@ Item {
         id: pill
         anchors.centerIn: parent
         
-        readonly property real thickness: (isSide ? parent.parent.width : parent.parent.height) / 1.65
+        readonly property real thickness: (root.isSide ? parent.parent.width : parent.parent.height) / 1.65
         readonly property real length: label.implicitWidth + 30
 
-        width: isSide ? thickness : length
-        height: isSide ? length : thickness
-        radius: (isSide ? width : height) / 2
+        width: root.isSide ? thickness : length
+        height: root.isSide ? length : thickness
+        radius: (root.isSide ? width : height) / 2
 
         color: Colors.color7
 
         Text {
             id: label
             anchors.centerIn: parent
-            rotation: location === "left" ? -90 : (location === "right" ? 90 : 0)
+            rotation: root.location === "left" ? -90 : (root.location === "right" ? 90 : 0)
             
             color: Colors.background 
             text: Time.time

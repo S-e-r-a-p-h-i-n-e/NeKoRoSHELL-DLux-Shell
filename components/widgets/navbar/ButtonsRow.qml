@@ -10,8 +10,6 @@ Grid {
     
     readonly property bool isSide: !navbar.isHorizontal
 
-    signal toggleSettingsPanel()
-
     columns: isSide ? 1 : 0
     rows: isSide ? 0 : 1
 
@@ -19,7 +17,7 @@ Grid {
         id: notif
         labelText: "󰂚"
         labelFont: navbar.font
-        buttonSize: (isSide ? parent.parent.width : parent.parent.height) / 1.65
+        buttonSize: (root.isSide ? parent.parent.width : parent.parent.height) / 1.65
         buttonColor: Colors.color7
         onButtonClicked: {
             Quickshell.execDetached({
@@ -32,16 +30,16 @@ Grid {
         id: settings
         labelText: ""
         labelFont: navbar.font
-        buttonSize: (isSide ? parent.parent.width : parent.parent.height) / 1.65
+        buttonSize: (root.isSide ? parent.parent.width : parent.parent.height) / 1.65
         buttonColor: Colors.color7
-        onButtonClicked: root.toggleSettingsPanel()
+        onButtonClicked: EventBus.toggleSettingsPanel()
     }
 
     Button {
         id: power
         labelText: "⏻"
         labelFont: navbar.font
-        buttonSize: (isSide ? parent.parent.width : parent.parent.height) / 1.65
+        buttonSize: (root.isSide ? parent.parent.width : parent.parent.height) / 1.65
         buttonColor: Colors.color7
         onButtonClicked: {
             Quickshell.execDetached({

@@ -1,11 +1,11 @@
 import Quickshell
+import QtQuick
 import qs.components
 import qs.shared
 
 Scope {
     id: root
-    property string navbarLocation: "top"
-    property bool enableBorders: true
+    
     property real navbarSize: 40
     property real fontSize: 12
     property real borderWidth: 10
@@ -13,35 +13,39 @@ Scope {
 
     property bool isPanelOpen: false
 
+    Connections {
+        target: EventBus
+        
+        function onToggleSettingsPanel() {
+            root.isPanelOpen = !root.isPanelOpen
+        }
+        
+        function onChangeLocation(newLocation) {
+            Config.saveSetting("navbarLocation", newLocation)
+        }
+        
+        function onToggleBorders(state) {
+            Config.saveSetting("enableBorders", state)
+        }
+    }
+
     ScreenBorder {
-        enabled: enableBorders
-        location: root.navbarLocation
+        enabled: Config.enableBorders 
+        location: Config.navbarLocation
         borderColor: Colors.background
         borderWidth: root.borderWidth
         cornerRadius: root.cornerRadius
 
         Navbar {
-            location: root.navbarLocation
+            location: Config.navbarLocation
             barColor: Colors.background
             barSize: root.navbarSize
             fontSize: root.fontSize
-
-            onToggleSettingsPanel: {
-                root.isPanelOpen = !root.isPanelOpen
-            }
         }
     }
 
     SettingsPanel {
         showPanel: root.isPanelOpen
-        bordersEnabled: root.enableBorders
-        
-        onLocationSelected: (newLocation) => {
-            root.navbarLocation = newLocation
-        }
-
-        onBordersToggled: (state) => {
-            root.enableBorders = state
-        }
+        bordersEnabled: Config.enableBorders
     }
 }

@@ -4,14 +4,16 @@ Rectangle {
     id: root
     signal buttonClicked()
 
-    property string style: circle
+    property string style: "circle"
     property string labelText
     property string labelFont
     property real buttonSize: parent.height / 1.65
     property color buttonColor
 
     height: buttonSize
-    width: height
+    width: {
+        if (style == "circle") height
+    }
     radius: height / 2
     color: buttonColor
     

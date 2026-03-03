@@ -16,8 +16,6 @@ Scope {
     property real fontSize
     readonly property bool isHorizontal: location === "top" || location === "bottom"
 
-    signal toggleSettingsPanel()
-
     Variants {
         model: Quickshell.screens
 
@@ -51,7 +49,6 @@ Scope {
             ButtonsRow { 
                 x: navbar.isHorizontal ? parent.width - width - 35 : (parent.width - width) / 2
                 y: navbar.isHorizontal ? (parent.height - height) / 2 : parent.height - height - 35
-                onToggleSettingsPanel: navbar.toggleSettingsPanel()
             }
         }
     }

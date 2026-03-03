@@ -8,9 +8,6 @@ Scope {
 
     property bool showPanel: false
     property bool bordersEnabled: false
-    
-    signal locationSelected(string newLocation)
-    signal bordersToggled(bool state)
 
     Variants {
         model: Quickshell.screens
@@ -56,7 +53,7 @@ Scope {
                         Toggle {
                             labelText: "Borders"
                             checked: settingsScope.bordersEnabled
-                            onToggled: (state) => settingsScope.bordersToggled(state)
+                            onToggled: (state) => EventBus.toggleBorders(state)
                         }
                     }
 
@@ -86,7 +83,7 @@ Scope {
                                 labelFont: "JetBrainsMono Nerd Font"
                                 buttonSize: 40
                                 buttonColor: Colors.color7
-                                onButtonClicked: settingsScope.locationSelected("top")
+                                onButtonClicked: EventBus.changeLocation("top")
                             }
                             Button {
                                 anchors { bottom: parent.bottom; horizontalCenter: parent.horizontalCenter }
@@ -94,7 +91,7 @@ Scope {
                                 labelFont: "JetBrainsMono Nerd Font"
                                 buttonSize: 40
                                 buttonColor: Colors.color7
-                                onButtonClicked: settingsScope.locationSelected("bottom")
+                                onButtonClicked: EventBus.changeLocation("bottom")
                             }
                             Button {
                                 anchors { left: parent.left; verticalCenter: parent.verticalCenter }
@@ -102,7 +99,7 @@ Scope {
                                 labelFont: "JetBrainsMono Nerd Font"
                                 buttonSize: 40
                                 buttonColor: Colors.color7
-                                onButtonClicked: settingsScope.locationSelected("left")
+                                onButtonClicked: EventBus.changeLocation("left")
                             }
                             Button {
                                 anchors { right: parent.right; verticalCenter: parent.verticalCenter }
@@ -110,7 +107,7 @@ Scope {
                                 labelFont: "JetBrainsMono Nerd Font"
                                 buttonSize: 40
                                 buttonColor: Colors.color7
-                                onButtonClicked: settingsScope.locationSelected("right")
+                                onButtonClicked: EventBus.changeLocation("right")
                             }
                         }
                     }
