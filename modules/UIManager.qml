@@ -5,7 +5,7 @@ import qs.shared
 
 Scope {
     id: root
-    
+
     property real navbarSize: 40
     property real fontSize: 12
     property real borderWidth: 10
@@ -28,6 +28,8 @@ Scope {
             Config.saveSetting("enableBorders", state)
         }
     }
+
+    Wallpaper { }
 
     ScreenBorder {
         enabled: Config.enableBorders 

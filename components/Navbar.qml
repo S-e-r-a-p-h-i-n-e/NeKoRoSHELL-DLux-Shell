@@ -3,6 +3,7 @@ pragma ComponentBehavior: Bound
 
 import Quickshell
 import QtQuick
+import QtQuick.Shapes
 import qs.components.widgets.navbar
 
 Scope {

@@ -14,6 +14,7 @@ Singleton {
 
     property string navbarLocation: "top"
     property bool enableBorders: true
+    property string wallpaperPath: "/home/nekorosys/.config/wallpapers/1145396.png"
 
     FileView {
         id: configFile
@@ -24,20 +25,23 @@ Singleton {
             
             property string navbarLocation: "top"
             property bool enableBorders: true
-            property bool visualizerEnabled: false
+            property string wallpaperPath: ""
 
             onNavbarLocationChanged: root.navbarLocation = navbarLocation
             onEnableBordersChanged: root.enableBorders = enableBorders
+            onWallpaperPathChanged: root.wallpaperPath = wallpaperPath
         }
     }
 
     function saveSetting(key, value) {
         if (key === "navbarLocation") root.navbarLocation = value;
         if (key === "enableBorders") root.enableBorders = value;
+        if (key === "wallpaperPath") root.wallpaperPath = value;
 
         let fileData = {
             navbarLocation: root.navbarLocation,
-            enableBorders: root.enableBorders
+            enableBorders: root.enableBorders,
+            wallpaperPath: root.wallpaperPath
         };
 
         let jsonString = JSON.stringify(fileData, null, 2);

@@ -1,5 +1,6 @@
 // quickshell/components/SettingsPanel.qml
 import Quickshell
+import Quickshell.Wayland
 import QtQuick
 import qs.shared
 
@@ -19,10 +20,12 @@ Scope {
             visible: settingsScope.showPanel
             color: "transparent"
 
+            WlrLayershell.keyboardFocus: WlrKeyboardFocus.OnDemand
+
             anchors { top: false; bottom: false; left: false; right: false }
             
-            implicitWidth: 260
-            implicitHeight: 350
+            implicitWidth: 500
+            implicitHeight: 480
             Rectangle {
                 anchors.fill: parent
                 color: Colors.background
@@ -54,6 +57,49 @@ Scope {
                             labelText: "Borders"
                             checked: settingsScope.bordersEnabled
                             onToggled: (state) => EventBus.toggleBorders(state)
+                        }
+                    }
+
+                    Rectangle { width: parent.width; height: 1; color: Colors.color8; opacity: 0.5 }
+
+                    Column {
+                        width: parent.width
+                        spacing: 15
+
+                        Text {
+                            text: "Wallpaper Path"
+                            color: Colors.foreground
+                            font.family: "JetBrainsMono Nerd Font"
+                            font.pixelSize: 14
+                            font.weight: Font.Bold
+                            anchors.horizontalCenter: parent.horizontalCenter
+                        }
+
+                        Rectangle {
+                            width: parent.width
+                            height: 35
+                            radius: 8
+                            color: Colors.color0
+                            border.color: Colors.color8
+                            border.width: 2
+                            clip: true
+
+                            TextInput {
+                                id: wpInput
+                                anchors.fill: parent
+                                anchors.margins: 10
+                                verticalAlignment: TextInput.AlignVCenter
+                                color: Colors.foreground
+                                font.family: "JetBrainsMono Nerd Font"
+                                font.pixelSize: 11
+                                text: Config.wallpaperPath
+                                selectByMouse: true
+                                
+                                onAccepted: {
+                                    Config.saveSetting("wallpaperPath", text)
+                                    wpInput.focus = false
+                                }
+                            }
                         }
                     }
 

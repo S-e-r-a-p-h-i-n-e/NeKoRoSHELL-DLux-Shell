@@ -1,4 +1,5 @@
 {
-  "navbarLocation": "right",
-  "enableBorders": false
+  "navbarLocation": "top",
+  "enableBorders": true,
+  "wallpaperPath": "/home/nekorosys/.config/wallpapers/bad-apple.mp4"
 }
