@@ -42,7 +42,7 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             
             x: root.checked ? track.width - width - 2 : 2
-            color: Colors.background
+            color: Colors.foreground
             
             Behavior on x { NumberAnimation { duration: 150; easing.type: Easing.OutQuad } }
         }

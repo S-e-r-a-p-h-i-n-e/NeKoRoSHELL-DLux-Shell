@@ -33,7 +33,7 @@ Panel {
             spacing: 15
             
             Toggle {
-                labelText: "Borders"
+                labelText: "Show Borders"
                 checked: settingsScope.bordersEnabled
                 onToggled: (state) => EventBus.toggleBorders(state)
             }

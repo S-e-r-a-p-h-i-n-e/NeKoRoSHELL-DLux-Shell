@@ -1,7 +1,7 @@
 import Quickshell
 import QtQuick
 import qs.components
-import qs.components.widgets
+import qs.components.widgets.panels
 import qs.shared
 
 Scope {

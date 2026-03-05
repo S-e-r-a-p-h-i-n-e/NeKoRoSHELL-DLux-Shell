@@ -8,6 +8,7 @@ Panel {
     
     panelWidth: 400
     panelHeight: 400
+    animationPreset: "slide"
 
     Column {
         anchors.fill: parent
