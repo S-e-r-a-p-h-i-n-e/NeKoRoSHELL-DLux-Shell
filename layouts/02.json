@@ -1,0 +1,21 @@
+{
+  "left": [],
+  "center": [
+    [
+      "tray",
+      "notifications",
+      "settings",
+      "power"
+    ],
+    [
+      "workspaces",
+      "clock",
+      "media"
+    ],
+    [
+      "audio",
+      "idleinhibitor"
+    ]
+  ],
+  "right": []
+}

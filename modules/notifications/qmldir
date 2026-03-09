@@ -1,0 +1,3 @@
+module qs.modules.notifications
+singleton Notifications 1.0 Notifications.qml
+NotificationsView       1.0 NotificationsView.qml

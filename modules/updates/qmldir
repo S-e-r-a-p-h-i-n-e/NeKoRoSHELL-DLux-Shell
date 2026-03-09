@@ -1,0 +1,3 @@
+module qs.modules.updates
+singleton Updates 1.0 Updates.qml
+UpdatesView       1.0 UpdatesView.qml

@@ -11,7 +11,6 @@ Singleton {
     readonly property string configPath: Quickshell.env("HOME") + "/.config/quickshell/config.json"
     readonly property string tmpPath:    Quickshell.env("HOME") + "/.config/quickshell/.config.json.tmp"
 
-    // Bar layout
     property string navbarLocation: "top"
     property bool   enableBorders:  true
     property string activeLayout:   "default"
@@ -19,12 +18,8 @@ Singleton {
     readonly property bool isHorizontal: navbarLocation === "top" || navbarLocation === "bottom"
 
     FileView {
-        id: configFile
         path: root.configPath
-
         adapter: JsonAdapter {
-            id: configAdapter
-
             property string navbarLocation: "top"
             property bool   enableBorders:  true
             property string activeLayout:   "default"
@@ -36,20 +31,20 @@ Singleton {
     }
 
     function saveSetting(key, value) {
-        if (key === "navbarLocation") root.navbarLocation = value;
-        if (key === "enableBorders")  root.enableBorders  = value;
-        if (key === "activeLayout")   root.activeLayout   = value;
+        if (key === "navbarLocation") root.navbarLocation = value
+        if (key === "enableBorders")  root.enableBorders  = value
+        if (key === "activeLayout")   root.activeLayout   = value
 
         let fileData = {
             navbarLocation: root.navbarLocation,
             enableBorders:  root.enableBorders,
             activeLayout:   root.activeLayout,
-        };
+        }
 
-        let jsonString = JSON.stringify(fileData, null, 2);
+        let jsonString = JSON.stringify(fileData, null, 2)
         Quickshell.execDetached({
             command: ["sh", "-c",
                 `mkdir -p ~/.config/quickshell && echo '${jsonString}' > ${root.tmpPath} && mv ${root.tmpPath} ${root.configPath}`]
-        });
+        })
     }
 }

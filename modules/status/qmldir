@@ -1,0 +1,3 @@
+module qs.modules.status
+singleton Status 1.0 Status.qml
+StatusView       1.0 StatusView.qml

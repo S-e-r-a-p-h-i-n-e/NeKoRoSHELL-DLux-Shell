@@ -1,0 +1,3 @@
+module qs.modules.network
+singleton Network 1.0 Network.qml
+NetworkView      1.0 NetworkView.qml

@@ -7,8 +7,8 @@ import qs.globals
 Panel {
     id: settingsPanel
 
-    panelWidth:  400
-    panelHeight: 475
+    panelWidth:  420
+    panelHeight: 560
 
     property bool bordersEnabled: Config.enableBorders
 
@@ -86,12 +86,15 @@ Panel {
             anchors.horizontalCenter: parent.horizontalCenter
         }
 
-        Row {
+        Flow {
             anchors.horizontalCenter: parent.horizontalCenter
-            spacing: 10
+            width: parent.width - 40
+            spacing: 2
 
             Repeater {
-                model: ["default", "minimal", "media"]
+                model: ["default", "minimal", "media",
+                        "01","02","03","04","05","06",
+                        "07","08","09"]
                 delegate: Rectangle {
                     required property string modelData
                     width:  80; height: 28; radius: 14

@@ -1,0 +1,3 @@
+module qs.modules.layoutswitcher
+singleton LayoutSwitcher 1.0 LayoutSwitcher.qml
+LayoutSwitcherView       1.0 LayoutSwitcherView.qml

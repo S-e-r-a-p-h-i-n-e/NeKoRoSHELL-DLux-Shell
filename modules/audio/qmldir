@@ -1,0 +1,3 @@
+module qs.modules.audio
+singleton Audio 1.0 Audio.qml
+AudioView       1.0 AudioView.qml

@@ -9,6 +9,7 @@ Scope {
     id: rootScope
 
     property bool   showPanel:       false
+    property string panelId:         ""
     property real   panelWidth:      400
     property real   panelHeight:     400
     property real   navbarOffset:    0
@@ -70,6 +71,16 @@ Scope {
             Item {
                 anchors.fill: parent
                 clip: true
+
+                // Dismiss overlay — transparent full-screen layer behind the panel.
+                // Clicking anywhere outside the panel content closes it.
+                MouseArea {
+                    anchors.fill: parent
+                    enabled:      rootScope.showPanel && rootScope.panelId !== ""
+                    onClicked:    EventBus.togglePanel(rootScope.panelId)
+                    // Don't steal hover/cursor from panel content above
+                    hoverEnabled: false
+                }
 
                 Item {
                     id: movingPanel

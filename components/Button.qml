@@ -10,20 +10,23 @@ Rectangle {
     property string style:       "circle"
     property string labelText
     property string labelFont
-    property real   buttonSize:  parent.height / 1.65
+    property real   buttonSize:  28
     property color  buttonColor
 
+    // Size is set entirely by buttonSize — never derived from parent
+    width:  style === "circle" ? buttonSize : label.implicitWidth + buttonSize * 0.6
     height: buttonSize
-    width:  style === "circle" ? height : implicitWidth
     radius: height / 2
     color:  buttonColor
 
     Text {
+        id: label
         anchors.centerIn: parent
         text:             root.labelText
         font.family:      root.labelFont
         color:            Colors.background
-        font.pixelSize:   parent.height / 1.65
+        // Fixed ratio of the button size — not derived from parent.height
+        font.pixelSize:   root.buttonSize * 0.6
     }
 
     MouseArea {
