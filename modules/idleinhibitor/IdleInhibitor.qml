@@ -13,7 +13,6 @@ QtObject {
         icon:        IdleInhibitor.icon,
         active:      IdleInhibitor.inhibited,
         activeColor: Colors.color7,
-        bgColor:     Colors.color0,
         onClicked:   function() { IdleInhibitor.toggle() }
     })
 

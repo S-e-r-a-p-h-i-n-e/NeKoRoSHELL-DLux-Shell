@@ -2,10 +2,11 @@
 pragma Singleton
 
 import QtQuick
+import Quickshell
 
 QtObject {
-    // Panel visibility
-    signal togglePanel(string panelId)
+    // Panel visibility — screen is the QtObject screen handle from Quickshell.screens
+    signal togglePanel(string panelId, var screen)
 
     // Bar configuration
     signal changeLocation(string newLocation)

@@ -10,10 +10,8 @@ QtObject {
 
     readonly property var item: ({
         icon:      "",
-        bgColor:   Colors.color7,
-        fgColor:   Colors.background,
-        onClicked: function() { SettingsModule.open() }
+        onClicked: function(screen) { SettingsModule.open(screen) }
     })
 
-    function open() { EventBus.togglePanel("theming") }
+    function open(screen) { EventBus.togglePanel("theming", screen) }
 }

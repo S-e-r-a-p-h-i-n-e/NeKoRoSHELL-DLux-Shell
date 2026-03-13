@@ -5,8 +5,8 @@
 //
 // The `item` object should have:
 //   icon:        string   — nerd font glyph
-//   bgColor:     color    — background (optional, falls back to Colors.color0)
-//   fgColor:     color    — icon color (optional, falls back to Colors.foreground)
+//   bgColor:     color    — background (optional, falls back to Colors.color7)
+//   fgColor:     color    — icon color (optional, falls back to Colors.color3)
 //   active:      bool     — whether to show active/highlight state (optional)
 //   activeColor: color    — color when active (optional, falls back to Colors.color7)
 //   onClicked:   function — left click handler (optional)
@@ -22,6 +22,7 @@ Item {
     property real   barThickness: 28
     property bool   inPill:       false
     property string barFont:      "JetBrainsMono Nerd Font"
+    property var    barScreen:    null
 
     // The module populates this — single item descriptor object
     property var item: ({})
@@ -37,7 +38,7 @@ Item {
 
         readonly property color resolvedBg: root.item.active
             ? (root.item.activeColor ?? Colors.color7)
-            : (root.item.bgColor ?? Colors.color0)
+            : (root.item.bgColor ?? Colors.color7)
 
         color: resolvedBg
         Behavior on color { ColorAnimation { duration: 150 } }
@@ -49,7 +50,7 @@ Item {
             font.pixelSize: root.barThickness * 0.6
             color:          root.item.active
                 ? Colors.background
-                : (root.item.fgColor ?? Colors.foreground)
+                : (root.item.fgColor ?? Colors.color3)
         }
 
         MouseArea {
@@ -58,9 +59,9 @@ Item {
             acceptedButtons: Qt.LeftButton | Qt.RightButton
             onClicked: (e) => {
                 if (e.button === Qt.RightButton) {
-                    if (root.item.onRightClicked) root.item.onRightClicked()
+                    if (root.item.onRightClicked) root.item.onRightClicked(root.barScreen)
                 } else {
-                    if (root.item.onClicked) root.item.onClicked()
+                    if (root.item.onClicked) root.item.onClicked(root.barScreen)
                 }
             }
         }

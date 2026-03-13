@@ -19,7 +19,8 @@ QtObject {
             icon:      Audio.speakerIcon,
             label:     Audio.sinkMuted ? "muted" : Audio.sinkVolume + "%",
             bgColor:   Audio.sinkMuted ? Colors.color1 : Colors.color0,
-            onClicked:  function() { Audio.muteSink() },
+            onClicked:      function() { Audio.openMixer() },
+            onRightClicked: function() { Audio.muteSink() },
             onScrolled: function(d) {
                 Audio.setSinkVolume(Math.max(0, Math.min(100, Audio.sinkVolume + d * 5)))
             }
@@ -28,7 +29,8 @@ QtObject {
             icon:      Audio.micIcon,
             label:     Audio.srcMuted ? "muted" : Audio.srcVolume + "%",
             bgColor:   Audio.srcMuted ? Colors.color1 : Colors.color0,
-            onClicked:  function() { Audio.muteSrc() },
+            onClicked:      function() { Audio.openMixer() },
+            onRightClicked: function() { Audio.muteSrc() },
             onScrolled: function(d) {
                 Audio.setSrcVolume(Math.max(0, Math.min(100, Audio.srcVolume + d * 5)))
             }

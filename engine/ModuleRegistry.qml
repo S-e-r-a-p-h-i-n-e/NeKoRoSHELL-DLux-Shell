@@ -38,7 +38,7 @@ QtObject {
         "notifications": notificationsStatic,
         "power":         powerStatic,
         "settings":      settingsStatic,
-        "tray":          trayStatic,
+        "tray":          trayView,
         "wallchange":    wallchangeStatic,
         // ── Custom ────────────────────────────────────────────────────────
         "cava":          cavaView,
@@ -86,8 +86,8 @@ QtObject {
     property Component settingsStatic: Component {
         StaticChip { item: SettingsModule.item }
     }
-    property Component trayStatic: Component {
-        StaticChip { item: Tray.item }
+    property Component trayView: Component {
+        TrayView {}
     }
     property Component wallchangeStatic: Component {
         StaticChip { item: WallChange.item }

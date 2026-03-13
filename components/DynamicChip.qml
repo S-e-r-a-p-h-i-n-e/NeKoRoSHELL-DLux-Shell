@@ -9,6 +9,7 @@ Item {
     property real barThickness: Style.moduleSize
     property bool inPill:       false
     property var  items:        []
+    property var  barScreen:    null
 
     implicitWidth:  isHorizontal ? hRow.implicitWidth : barThickness
     implicitHeight: isHorizontal ? barThickness       : vCol.implicitHeight
@@ -79,7 +80,13 @@ Item {
             anchors.fill:    parent
             cursorShape:     Qt.PointingHandCursor
             acceptedButtons: Qt.LeftButton | Qt.RightButton
-            onClicked:       (e) => { if (modelData.onClicked) modelData.onClicked(e) }
+            onClicked: (e) => {
+                    if (e.button === Qt.RightButton) {
+                        if (modelData.onRightClicked) modelData.onRightClicked(root.barScreen)
+                    } else {
+                        if (modelData.onClicked) modelData.onClicked(root.barScreen)
+                    }
+                }
             onWheel:         (e) => { if (modelData.onScrolled) modelData.onScrolled(e.angleDelta.y > 0 ? 1 : -1) }
         }
     }

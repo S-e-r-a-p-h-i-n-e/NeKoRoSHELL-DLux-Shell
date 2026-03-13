@@ -8,6 +8,7 @@ Item {
     id: root
 
     property bool isHorizontal: Config.isHorizontal
+    property var  barScreen:    null
     property real moduleSize:   Style.moduleSize
     property var  modules:      []
 
@@ -28,6 +29,7 @@ Item {
         Binding { when: status === Loader.Ready; target: item; property: "barThickness";  value: root.moduleSize }
         // Only inject inPill on items that declare it (chips) — custom views like ClockView don't have it
         Binding { when: status === Loader.Ready && item !== null && item.hasOwnProperty("inPill"); target: item; property: "inPill"; value: true }
+        Binding { when: status === Loader.Ready && item !== null && item.hasOwnProperty("barScreen"); target: item; property: "barScreen"; value: root.barScreen }
     }
 
     Row {

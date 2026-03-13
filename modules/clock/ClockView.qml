@@ -1,6 +1,7 @@
 // modules/clock/ClockView.qml
 import QtQuick
 import qs.globals
+import qs.modules.clock
 
 Item {
     id: root
@@ -66,5 +67,11 @@ Item {
                 color:          Colors.foreground
             }
         }
+    }
+
+    MouseArea {
+        anchors.fill: parent
+        cursorShape:  Qt.PointingHandCursor
+        onClicked:    EventBus.togglePanel("dashboard", root.barScreen)
     }
 }

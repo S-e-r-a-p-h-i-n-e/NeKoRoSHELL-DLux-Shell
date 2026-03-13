@@ -36,7 +36,7 @@ Scope {
             required property var modelData
 
             screen:        modelData
-            color:         Colors.background
+            color:         Config.enableBorders ? Colors.background : "transparent"
             exclusionMode: ExclusionMode.Auto
 
             anchors {
@@ -56,43 +56,49 @@ Scope {
 
             // ── Horizontal ────────────────────────────────────────────────
             BarSlot {
-                visible: Config.isHorizontal
-                modules: root.layoutLeft
+                visible:    Config.isHorizontal
+                modules:    root.layoutLeft
+                barScreen:  bar.modelData
                 anchors.left:           parent.left
-                anchors.leftMargin:     12
+                anchors.leftMargin:     Style.barPadding
                 anchors.verticalCenter: parent.verticalCenter
             }
             BarSlot {
-                visible: Config.isHorizontal
-                modules: root.layoutCenter
+                visible:   Config.isHorizontal
+                modules:   root.layoutCenter
+                barScreen: bar.modelData
                 anchors.centerIn: parent
             }
             BarSlot {
-                visible: Config.isHorizontal
-                modules: root.layoutRight
+                visible:   Config.isHorizontal
+                modules:   root.layoutRight
+                barScreen: bar.modelData
                 anchors.right:          parent.right
-                anchors.rightMargin:    12
+                anchors.rightMargin:    Style.barPadding
                 anchors.verticalCenter: parent.verticalCenter
             }
 
             // ── Vertical ──────────────────────────────────────────────────
             BarSlot {
-                visible: !Config.isHorizontal
-                modules: root.layoutLeft
+                visible:   !Config.isHorizontal
+                modules:   root.layoutLeft
+                barScreen: bar.modelData
                 anchors.top:              parent.top
-                anchors.topMargin:        12
+                anchors.topMargin:        Style.barPadding
                 anchors.horizontalCenter: parent.horizontalCenter
             }
             BarSlot {
-                visible: !Config.isHorizontal
-                modules: root.layoutCenter
+                visible:   !Config.isHorizontal
+                modules:   root.layoutCenter
+                barScreen: bar.modelData
                 anchors.centerIn: parent
             }
             BarSlot {
-                visible: !Config.isHorizontal
-                modules: root.layoutRight
+                visible:   !Config.isHorizontal
+                modules:   root.layoutRight
+                barScreen: bar.modelData
                 anchors.bottom:           parent.bottom
-                anchors.bottomMargin:     12
+                anchors.bottomMargin:     Style.barPadding
                 anchors.horizontalCenter: parent.horizontalCenter
             }
         }

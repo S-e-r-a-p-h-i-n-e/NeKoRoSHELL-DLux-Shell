@@ -47,36 +47,47 @@ Scope {
         enabled:      Config.enableBorders
         location:     Config.navbarLocation
         borderColor:  Colors.background
-        borderWidth:  10
-        cornerRadius: 20
+        borderWidth:  Style.borderWidth
+        cornerRadius: Style.cornerRadius
     }
 
     property string activePanel: ""
+    property var    activeScreen: null
 
     Dashboard {
         showPanel:    shell.activePanel === "dashboard"
+        targetScreen: shell.activeScreen
         panelId:      "dashboard"
         navbarOffset: loader.barSize
     }
 
     Settings {
         showPanel:      shell.activePanel === "theming"
+        targetScreen:   shell.activeScreen
         panelId:        "theming"
         navbarOffset:   loader.barSize
         bordersEnabled: Config.enableBorders
     }
 
-    TrayPanel {
-        showPanel:    shell.activePanel === "tray"
-        panelId:      "tray"
+
+    AdvancedSettings {
+        showPanel:    shell.activePanel === "advanced"
+        targetScreen: shell.activeScreen
+        panelId:      "advanced"
         navbarOffset: loader.barSize
     }
 
     Connections {
         target: EventBus
 
-        function onTogglePanel(panelId) {
-            shell.activePanel = (shell.activePanel === panelId) ? "" : panelId
+        function onTogglePanel(panelId, screen) {
+            if (shell.activePanel === panelId) {
+                shell.activePanel = ""
+                shell.activeScreen = null
+            } else {
+                shell.activePanel = panelId
+                shell.activeScreen = screen
+            }
         }
         function onChangeLocation(newLocation) {
             Config.saveSetting("navbarLocation", newLocation)

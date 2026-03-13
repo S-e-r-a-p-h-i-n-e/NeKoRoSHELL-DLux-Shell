@@ -10,8 +10,6 @@ QtObject {
 
     readonly property var item: ({
         icon:      "󰂚",
-        bgColor:   Colors.color7,
-        fgColor:   Colors.background,
         onClicked: function() { Notifications.open() }
     })
 

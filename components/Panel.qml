@@ -10,6 +10,7 @@ Scope {
 
     property bool   showPanel:       false
     property string panelId:         ""
+    property var    targetScreen:    null
     property real   panelWidth:      400
     property real   panelHeight:     400
     property real   navbarOffset:    0
@@ -39,7 +40,7 @@ Scope {
             required property var modelData
             screen: modelData
 
-            visible: rootScope.animProgress > 0.01
+            visible: rootScope.animProgress > 0.01 && (!rootScope.targetScreen || rootScope.targetScreen.name === modelData.name)
             color:   "transparent"
 
             WlrLayershell.layer:         WlrLayer.Top
@@ -86,7 +87,14 @@ Scope {
                     id: movingPanel
                     width:  rootScope.panelWidth
                     height: rootScope.panelHeight
-                    anchors.centerIn: parent
+                    // Align to the bar edge
+                    anchors.left:   Config.navbarLocation === "left"   ? parent.left   : undefined
+                    anchors.right:  Config.navbarLocation === "right"  ? parent.right  : undefined
+                    anchors.top:    Config.navbarLocation === "top"    ? parent.top    : undefined
+                    anchors.bottom: Config.navbarLocation === "bottom" ? parent.bottom : undefined
+                    // Center on the perpendicular axis
+                    anchors.horizontalCenter: Config.isHorizontal ? parent.horizontalCenter : undefined
+                    anchors.verticalCenter:   Config.isHorizontal ? undefined : parent.verticalCenter
 
                     opacity: rootScope.animationPreset === "fade"  ? rootScope.animProgress : 1.0
                     scale:   rootScope.animationPreset === "scale" ? 0.9 + (0.1 * rootScope.animProgress) : 1.0
