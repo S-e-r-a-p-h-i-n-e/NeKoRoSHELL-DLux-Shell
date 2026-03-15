@@ -60,7 +60,14 @@ Panel {
                     Toggle {
                         labelText: "Show Borders"
                         checked:   settingsPanel.bordersEnabled
+                        disabled:  Config.transparentNavbar
                         onToggled: (state) => EventBus.toggleBorders(state)
+                    }
+                    Toggle {
+                        labelText: "Transparency"
+                        checked:   Config.transparentNavbar
+                        disabled:  settingsPanel.bordersEnabled
+                        onToggled: (state) => EventBus.toggleTransparentNavbar(state)
                     }
                 }
 

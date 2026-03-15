@@ -11,26 +11,51 @@ Singleton {
     readonly property string configPath: Quickshell.env("HOME") + "/.config/quickshell/config.json"
     readonly property string tmpPath:    Quickshell.env("HOME") + "/.config/quickshell/.config.json.tmp"
 
-    property string navbarLocation: "top"
-    property bool   enableBorders:  true
-    property string activeLayout:   "default"
+    property string navbarLocation:   "top"
+    property bool   enableBorders:    true
+    property bool   transparentNavbar: false
+    property string activeLayout:     "default"
+
+    // True once config.json has been read at least once.
+    // Panel windows must not be created before this is true, because
+    // Wayland layer-shell anchors are immutable after window creation —
+    // if a PanelWindow is created with the hardcoded defaults above and
+    // the saved value differs, the anchors can never be corrected.
+    property bool loaded: false
 
     readonly property bool isHorizontal: navbarLocation === "top" || navbarLocation === "bottom"
 
     FileView {
+        id: configFile
         path: root.configPath
         adapter: JsonAdapter {
-            property string navbarLocation: "top"
-            property bool   enableBorders:  true
-            property string activeLayout:   "default"
+            property string navbarLocation:    "top"
+            property bool   enableBorders:     true
+            property bool   transparentNavbar: false
+            property string activeLayout:      "default"
 
-            onNavbarLocationChanged: root.navbarLocation = navbarLocation
-            onEnableBordersChanged:  root.enableBorders  = enableBorders
-            onActiveLayoutChanged:   root.activeLayout   = activeLayout
+            onNavbarLocationChanged: {
+                root.navbarLocation = navbarLocation
+                root.loaded = true
+            }
+            onEnableBordersChanged:     root.enableBorders     = enableBorders
+            onTransparentNavbarChanged: root.transparentNavbar = transparentNavbar
+            onActiveLayoutChanged:      root.activeLayout      = activeLayout
         }
     }
 
-    readonly property var settingKeys: ["navbarLocation", "enableBorders", "activeLayout"]
+    // Fallback: if navbarLocation in the file matches the hardcoded default
+    // ("top"), onNavbarLocationChanged never fires and loaded would stay false
+    // forever. This timer ensures panels always appear after a short delay
+    // regardless.
+    Timer {
+        interval: 150
+        running:  !root.loaded
+        repeat:   false
+        onTriggered: root.loaded = true
+    }
+
+    readonly property var settingKeys: ["navbarLocation", "enableBorders", "transparentNavbar", "activeLayout"]
 
     function saveSetting(key, value) {
         root[key] = value

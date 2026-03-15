@@ -11,5 +11,6 @@ QtObject {
     // Bar configuration
     signal changeLocation(string newLocation)
     signal toggleBorders(bool state)
+    signal toggleTransparentNavbar(bool state)
     signal changeLayout(string layoutName)
 }

@@ -34,8 +34,40 @@ Scope {
         : 0
 
     Variants {
-        model: Quickshell.screens
+        // Do not instantiate PanelWindows until the config file has been
+        // read. Wayland layer-shell anchors are fixed at window-creation
+        // time, so creating a window while navbarLocation still holds the
+        // hardcoded default ("top") would permanently mis-anchor the panel
+        // when the user has a side navbar saved.
+        model: Config.loaded ? Quickshell.screens : null
 
+        // ── Dismiss overlay ───────────────────────────────────────────────
+        // Full-screen transparent window just for catching outside clicks.
+        // Kept separate so the blur window can be sized exactly to the panel.
+        PanelWindow {
+            required property var modelData
+            screen: modelData
+
+            visible: rootScope.showPanel && rootScope.panelId !== "" &&
+                     (!rootScope.targetScreen || rootScope.targetScreen.name === modelData.name)
+            color:   "transparent"
+
+            WlrLayershell.layer:         WlrLayer.Top
+            exclusionMode:               ExclusionMode.Ignore
+            WlrLayershell.keyboardFocus: WlrKeyboardFocus.None
+            WlrLayershell.namespace:     "quickshell-panel-dismiss"
+
+            anchors { top: true; bottom: true; left: true; right: true }
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked:    EventBus.togglePanel(rootScope.panelId)
+                hoverEnabled: false
+            }
+        }
+
+        // ── Panel content window ──────────────────────────────────────────
+        // Sized exactly to the panel so Hyprland's blur is confined to it.
         PanelWindow {
             required property var modelData
             screen: modelData
@@ -62,37 +94,26 @@ Scope {
                 right:  Config.navbarLocation === "right"  ? (rootScope.navbarOffset + rootScope.visualGap) : 0
             }
 
+            // Sized exactly to the panel — no excess surface for blur to spill onto.
             implicitWidth:  rootScope.isHorizontal
-                ? (rootScope.panelWidth  + (rootScope.tensionRadius * 2))
+                ? rootScope.panelWidth + (rootScope.tensionRadius * 2)
                 : rootScope.panelWidth
             implicitHeight: !rootScope.isHorizontal
-                ? (rootScope.panelHeight + (rootScope.tensionRadius * 2))
+                ? rootScope.panelHeight + (rootScope.tensionRadius * 2)
                 : rootScope.panelHeight
 
             Item {
                 anchors.fill: parent
                 clip: true
 
-                // Dismiss overlay — transparent full-screen layer behind the panel.
-                // Clicking anywhere outside the panel content closes it.
-                MouseArea {
-                    anchors.fill: parent
-                    enabled:      rootScope.showPanel && rootScope.panelId !== ""
-                    onClicked:    EventBus.togglePanel(rootScope.panelId)
-                    // Don't steal hover/cursor from panel content above
-                    hoverEnabled: false
-                }
-
                 Item {
                     id: movingPanel
                     width:  rootScope.panelWidth
                     height: rootScope.panelHeight
-                    // Align to the bar edge
-                    anchors.left:   Config.navbarLocation === "left"   ? parent.left   : undefined
-                    anchors.right:  Config.navbarLocation === "right"  ? parent.right  : undefined
-                    anchors.top:    Config.navbarLocation === "top"    ? parent.top    : undefined
-                    anchors.bottom: Config.navbarLocation === "bottom" ? parent.bottom : undefined
-                    // Center on the perpendicular axis
+                    anchors.left:             Config.navbarLocation === "left"   ? parent.left   : undefined
+                    anchors.right:            Config.navbarLocation === "right"  ? parent.right  : undefined
+                    anchors.top:              Config.navbarLocation === "top"    ? parent.top    : undefined
+                    anchors.bottom:           Config.navbarLocation === "bottom" ? parent.bottom : undefined
                     anchors.horizontalCenter: Config.isHorizontal ? parent.horizontalCenter : undefined
                     anchors.verticalCenter:   Config.isHorizontal ? undefined : parent.verticalCenter
 
@@ -111,17 +132,27 @@ Scope {
 
                     Rectangle {
                         id: bg
-                        color:  Colors.background
-                        radius: rootScope.panelRadius
-                        border.width: 0
+                        color:        Config.transparentNavbar ? Qt.rgba(Colors.background.r, Colors.background.g, Colors.background.b, 0.01) : Colors.background
+                        radius:       rootScope.panelRadius
+                        border.width: Config.transparentNavbar ? 1 : 0
+                        border.color: Config.transparentNavbar ? Qt.rgba(1, 1, 1, 0.15) : "transparent"
+
+                        Behavior on color        { ColorAnimation  { duration: Animations.normal; easing.type: Animations.easeInOut } }
+                        Behavior on border.color { ColorAnimation  { duration: Animations.normal; easing.type: Animations.easeInOut } }
+                        Behavior on border.width { NumberAnimation { duration: Animations.normal; easing.type: Animations.easeInOut } }
 
                         anchors {
                             fill:         parent
-                            topMargin:    Config.navbarLocation === "top"    ? -radius : 0
-                            bottomMargin: Config.navbarLocation === "bottom" ? -radius : 0
-                            leftMargin:   Config.navbarLocation === "left"   ? -radius : 0
-                            rightMargin:  Config.navbarLocation === "right"  ? -radius : 0
+                            topMargin:    (!Config.transparentNavbar && Config.navbarLocation === "top")    ? -radius : 0
+                            bottomMargin: (!Config.transparentNavbar && Config.navbarLocation === "bottom") ? -radius : 0
+                            leftMargin:   (!Config.transparentNavbar && Config.navbarLocation === "left")   ? -radius : 0
+                            rightMargin:  (!Config.transparentNavbar && Config.navbarLocation === "right")  ? -radius : 0
                         }
+
+                        Behavior on anchors.topMargin    { NumberAnimation { duration: Animations.normal; easing.type: Animations.easeInOut } }
+                        Behavior on anchors.bottomMargin { NumberAnimation { duration: Animations.normal; easing.type: Animations.easeInOut } }
+                        Behavior on anchors.leftMargin   { NumberAnimation { duration: Animations.normal; easing.type: Animations.easeInOut } }
+                        Behavior on anchors.rightMargin  { NumberAnimation { duration: Animations.normal; easing.type: Animations.easeInOut } }
                     }
 
                     Item {
@@ -140,6 +171,8 @@ Scope {
                 Item {
                     anchors.fill: parent
                     visible: rootScope.animationPreset === "slide" && rootScope.animProgress > 0
+                    opacity: Config.transparentNavbar ? 0.0 : 1.0
+                    Behavior on opacity { NumberAnimation { duration: Animations.normal; easing.type: Animations.easeInOut } }
 
                     transform: Translate {
                         x: Config.navbarLocation === "left"  ? -rootScope.filletOffset

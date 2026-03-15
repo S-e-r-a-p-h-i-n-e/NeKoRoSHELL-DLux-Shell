@@ -36,7 +36,8 @@ Scope {
             required property var modelData
 
             screen:        modelData
-            color:         Config.enableBorders ? Colors.background : "transparent"
+            color:         Config.transparentNavbar ? "transparent" : Colors.background
+            Behavior on color { ColorAnimation { duration: Animations.normal; easing.type: Animations.easeInOut } }
             exclusionMode: ExclusionMode.Auto
 
             anchors {

@@ -44,7 +44,7 @@ Scope {
     LayoutLoader { id: loader }
 
     ScreenBorder {
-        enabled:      Config.enableBorders
+        enabled:      Config.enableBorders && !Config.transparentNavbar
         location:     Config.navbarLocation
         borderColor:  Colors.background
         borderWidth:  Style.borderWidth
@@ -94,6 +94,9 @@ Scope {
         }
         function onToggleBorders(state) {
             Config.saveSetting("enableBorders", state)
+        }
+        function onToggleTransparentNavbar(state) {
+            Config.saveSetting("transparentNavbar", state)
         }
         function onChangeLayout(layoutName) {
             Config.saveSetting("activeLayout", layoutName)

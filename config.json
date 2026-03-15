@@ -1,5 +1,6 @@
 {
   "navbarLocation": "top",
-  "enableBorders": true,
+  "enableBorders": false,
+  "transparentNavbar": true,
   "activeLayout": "09"
 }

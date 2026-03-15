@@ -7,11 +7,15 @@ Item {
 
     property string labelText: "Setting"
     property bool   checked:   true
+    property bool   disabled:  false
 
     signal toggled(bool newState)
 
     implicitWidth:  parent ? parent.width : 200
     implicitHeight: 30
+
+    opacity: root.disabled ? 0.35 : 1.0
+    Behavior on opacity { NumberAnimation { duration: 150 } }
 
     Text {
         anchors.left:            parent.left
@@ -46,7 +50,8 @@ Item {
 
         MouseArea {
             anchors.fill: parent
-            cursorShape:  Qt.PointingHandCursor
+            cursorShape:  root.disabled ? Qt.ForbiddenCursor : Qt.PointingHandCursor
+            enabled:      !root.disabled
             onClicked:    root.toggled(!root.checked)
         }
     }
