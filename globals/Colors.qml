@@ -37,27 +37,29 @@ Singleton {
       id: themeAdapter
 
       property JsonObject special: JsonObject {
-        property color background: "#1C1C1E"
-        property color foreground: "#F0CAC6"
+        // #CC is ~80% opacity. 1E1E2E is a neutral, deep slate.
+        property color background: "#CC1E1E2E" 
+        property color foreground: "#CAD3F5"
+        property color cursor: "#F4DBD6"
       }
 
       property JsonObject colors: JsonObject {
-        property color color0: "#434345"
-        property color color1: "#432829"
-        property color color2: "#5A3130"
-        property color color3: "#713B37"
-        property color color4: "#87443D"
-        property color color5: "#9E4E44"
-        property color color6: "#9E4E44"
-        property color color7: "#E1ABA4"
-        property color color8: "#9D7873"
-        property color color9: "#5A3537"
-        property color color10: "#784240"
-        property color color11: "#964E49"
-        property color color12: "#B55B52"
-        property color color13: "#D3685B"
-        property color color14: "#D3685B"
-        property color color15: "#E1ABA4"
+        property color color0: "#494D64" // Black (Muted Slate)
+        property color color1: "#ED8796" // Red
+        property color color2: "#A6DA95" // Green
+        property color color3: "#EED49F" // Yellow
+        property color color4: "#8AADF4" // Blue
+        property color color5: "#F5BDE6" // Magenta
+        property color color6: "#8BD5CA" // Cyan
+        property color color7: "#B8C0E0" // White
+        property color color8: "#5B6078" // Bright Black
+        property color color9: "#ED8796" // Bright Red
+        property color color10: "#A6DA95" // Bright Green
+        property color color11: "#EED49F" // Bright Yellow
+        property color color12: "#8AADF4" // Bright Blue
+        property color color13: "#F5BDE6" // Bright Magenta
+        property color color14: "#8BD5CA" // Bright Cyan
+        property color color15: "#A5ADCB" // Bright White
       }
     }
   }
