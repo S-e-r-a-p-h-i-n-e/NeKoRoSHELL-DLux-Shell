@@ -5,12 +5,12 @@ configuration {
 }
 
 * {
-    main-bg:            #373737;
-    main-fg:            #ffffff;
-    main-br:            #000000;
-    main-ex:            #373737;
-    select-bg:          #808080;
-    select-fg:          #ffffff;
+    main-bg:            #1E1E2ECC; 
+    main-fg:            #CAD3F5;   
+    main-br:            #494D64;   
+    main-ex:            #1E1E2ECC; 
+    select-bg:          #8AADF4;   
+    select-fg:          #1E1E2E;   
     separatorcolor:     transparent;
     border-color:       transparent;
 }
