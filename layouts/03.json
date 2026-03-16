@@ -5,18 +5,12 @@
   "center": [
     [
       "cpu",
-      "network"
-    ],
-    [
+      "network",
       "idleinhibitor",
+      "workspaces",
       "clock",
-      "workspaces"
-    ],
-    [
       "audio",
-      "updates"
-    ],
-    [
+      "updates",
       "wallchange",
       "cliphist",
       "tray",

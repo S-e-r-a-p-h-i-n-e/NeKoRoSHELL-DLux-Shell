@@ -14,6 +14,6 @@ QtObject {
     })
 
     function open() {
-        Quickshell.execDetached({ command: ["/bin/bash", "-l", "-c", "clipmgr.sh"] })
+        Quickshell.execDetached({ command: ["/bin/bash", "-l", "-c", "~/.config/quickshell/modules/cliphist/clipmgr.sh"] })
     }
 }

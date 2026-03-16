@@ -49,7 +49,7 @@ Item {
             font.family:    root.barFont
             font.pixelSize: root.barThickness * 0.6
             color:          root.item.active
-                ? Colors.background
+                ? Colors.color3
                 : (root.item.fgColor ?? Colors.color3)
         }
 

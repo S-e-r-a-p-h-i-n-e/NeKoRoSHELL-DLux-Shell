@@ -14,6 +14,6 @@ QtObject {
     })
 
     function change() {
-        Quickshell.execDetached({ command: ["/bin/bash", "-l", "-c", "wallchange.sh"] })
+        Quickshell.execDetached({ command: ["/bin/bash", "-l", "-c", "~/.config/quickshell/modules/wallchange/wallchange.sh"] })
     }
 }

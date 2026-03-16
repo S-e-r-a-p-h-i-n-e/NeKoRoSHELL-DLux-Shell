@@ -68,6 +68,7 @@ QtObject {
         // ── Chat / Social ─────────────────────────────────────────────────
         "discord":                      "󰙯",
         "vesktop":                      "󰙯",
+        "vencord":                      "󰙯",
         "telegram":                     "󰔁",
         "signal":                       "󰍡",
         "slack":                        "󰒱",
@@ -138,20 +139,29 @@ QtObject {
         "piper":                        "󰍽",
         "openrgb":                      "󰌁",
         "polychromatic":                "󰌁",
+        "chrome_status_icon":           "󰙯", // this is vesktop (cause it is hella scuffed and apparently "vesktop" isnt being detected)
     })
 
     function iconFor(item) {
-        // Try title first, then id fragments
-        let key = (item.title ?? "").toLowerCase().trim()
-        if (iconMap[key]) return iconMap[key]
+        // Safely grab title and id, defaulting to empty strings if null
+        let title = (item.title || "").toLowerCase().trim()
+        let id = (item.id || "").toLowerCase().trim()
 
-        // Try matching any iconMap key as a substring of title or id
-        let id = (item.id ?? "").toLowerCase()
+        // 1. Try exact title match first
+        if (iconMap[title]) return iconMap[title]
+
+        // 2. Try matching any iconMap key as a substring of title or id
         for (let k in iconMap) {
-            if (key.includes(k) || id.includes(k)) return iconMap[k]
+            if (title.includes(k) || id.includes(k)) return iconMap[k]
         }
 
-        // Fallback: first letter of title
-        return (item.title ?? "?").substring(0, 1).toUpperCase()
+        // 3. Hardened Fallback: If title has text, use first letter. Otherwise, return a default icon.
+        if (title.length > 0) {
+            return title.substring(0, 1).toUpperCase()
+        } else if (id.length > 0) {
+            return id.substring(0, 1).toUpperCase() // Fallback to ID's first letter if title is completely empty
+        } else {
+            return "󰍜" // Generic dot/circle fallback for completely broken SNI implementations
+        }
     }
 }
