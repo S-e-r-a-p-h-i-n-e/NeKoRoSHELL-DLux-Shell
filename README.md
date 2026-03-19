@@ -17,7 +17,9 @@ Instead of hardcoding UI structure in QML, YAQC treats the shell more like a **r
 
 ## 📷 Showcase
 
-![Video](Showcase/2026-03-19_13-44-03.mp4)
+
+<https://github.com/user-attachments/assets/c00e5be8-12e1-4f28-bbb1-35e37a188b6b>
+
 ![Screenshot](Showcase/Default%20+%20Borders.png)
 ![Screenshot](Showcase/Default%20+%20Transparent.png)
 
