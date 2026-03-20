@@ -90,8 +90,6 @@ This allows the interface to behave more like a **composable system** than a fix
 
 ## 🎯 Project Goals
 
-<div align="center">
-
 | 📋 **TODO** | **STATUS** |
 | :---: | :---: |
 | Replace swww | ✅ |
@@ -101,8 +99,6 @@ This allows the interface to behave more like a **composable system** than a fix
 | Replace wlogout | ✅ |
 | Replace SwayNC | ✅ |
 | Port all necessary bash scripts into native QML modules/functionality | ✅ |
-
-</div>
 
 ---
 
@@ -169,6 +165,17 @@ YAQC includes a native wallpaper system — no `swww` or `mpvpaper` needed. Plac
 ## ⚙️ Configuration
  
 Both config files live-reload via `FileView` — changes take effect immediately without restarting.
+
+There are five panels available for you to call as a command or set as a keybinds in hyprland. 
+
+| Panel                    | Commands                     |
+|--------------------------|------------------------------|
+| **Application Launcher** | qs ipc call launcher toggle  |
+| **Wallpaper Changer**    | qs ipc call wallpaper toggle |
+| **Settings**             | qs ipc call theming toggle   |
+| **Clipboard**            | qs ipc call clipboard toggle |
+| **Emojis**               | qs ipc call emoji toggle     |
+
  
 ### `config.json` — behaviour
  
