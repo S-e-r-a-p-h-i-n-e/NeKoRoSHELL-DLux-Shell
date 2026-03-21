@@ -1,8 +1,8 @@
 {
   "navbarLocation": "top",
-  "enableBorders": true,
-  "transparentNavbar": false,
+  "enableBorders": false,
+  "transparentNavbar": true,
   "activeLayout": "09",
   "dashboardLayout": "[\"stats\",\"updates\",\"speaker\",\"network\",\"bluetooth\",\"idleinhibitor\",\"settings\",\"wallchange\",\"power\"]",
-  "wallpaperPath": "/home/amelie/.config/quickshell/wallpapers/Moon Goddess [Wallpaper Engine 4K].webm"
+  "wallpaperPath": "/home/amelie/.config/quickshell/wallpapers/Guardian ｜｜ Epic Orchestral Cinematic Music ｜｜ Vocals ｜｜ S7ven ｜｜ @amavaarts.mp4"
 }
