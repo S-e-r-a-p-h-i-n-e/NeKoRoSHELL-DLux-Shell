@@ -23,6 +23,7 @@ import qs.modules.tray
 import qs.modules.updates
 import qs.modules.wallchange
 import qs.modules.workspaces
+import qs.modules.taskbar
 
 Scope {
     id: shell
