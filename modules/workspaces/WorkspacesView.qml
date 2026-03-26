@@ -59,7 +59,7 @@ Item {
                     radius: height / 2
                     color:  emptyWsArea.containsMouse
                         ? Colors.foreground
-                        : (wsDelegate.modelData.focused ? Colors.color0 : Colors.color7)
+                        : (wsDelegate.modelData.focused ? Colors.color3 : Colors.color7)
                     Behavior on color { ColorAnimation { duration: 150 } }
 
                     Text {
@@ -141,7 +141,7 @@ Item {
                             radius: height / 2
                             color:  appArea.containsMouse
                                 ? Colors.foreground
-                                : (appDot.isFocused ? Colors.color0 : Colors.color7)
+                                : (appDot.isFocused ? Colors.color3 : Colors.color7)
                             Behavior on color { ColorAnimation { duration: 150 } }
 
                             Text {
@@ -149,11 +149,23 @@ Item {
                                 text:           Workspaces.iconFor(appDot.modelData)
                                 color:          appArea.containsMouse
                                     ? Colors.background
-                                    : (appDot.isFocused ? Colors.color7 : Colors.color0)
+                                    : (appDot.isFocused ? Colors.color7 : Colors.color3)
                                 Behavior on color { ColorAnimation { duration: 150 } }
                                 font.family:    Style.barFont
                                 font.pixelSize: root.iconSize
                                 font.weight:    Font.Bold
+                            }
+
+                            // Small pin indicator at the bottom for pinned apps
+                            Rectangle {
+                                visible: Workspaces.isPinned(appDot.modelData)
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                anchors.bottom: parent.bottom
+                                anchors.bottomMargin: 2
+                                width:  4
+                                height: 4
+                                radius: 2
+                                color:  appDot.isFocused ? Colors.color7 : Colors.color0
                             }
                         }
 
@@ -162,7 +174,14 @@ Item {
                             anchors.fill: parent
                             cursorShape:  Qt.PointingHandCursor
                             hoverEnabled: true
-                            onClicked:    Workspaces.focusWindow(appDot.modelData.address)
+                            acceptedButtons: Qt.LeftButton | Qt.RightButton
+                            onClicked: (event) => {
+                                if (event.button === Qt.RightButton) {
+                                    Workspaces.togglePin(appDot.modelData)
+                                } else {
+                                    Workspaces.focusWindow(appDot.modelData.address)
+                                }
+                            }
                         }
                     }
                 }
