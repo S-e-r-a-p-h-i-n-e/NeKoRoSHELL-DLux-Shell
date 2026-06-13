@@ -14,7 +14,7 @@ The machinery that constructs the bar, drives the dashboard, and manages wallpap
 | `AppEngine.qml`       | singleton | Discovers installed applications by scanning `.desktop` files from standard XDG paths and Flatpak. Powers the Launcher panel |
 | `ClipboardEngine.qml` | singleton | Manages clipboard history via cliphist and favorites via a flat text file. Powers the ClipManager panel |
 | `WallpaperEngine.qml` | singleton | File discovery for the wallpaper picker. `apply(path)` saves to `Config.wallpaperPath` which `WallpaperWindow` reacts to |
-| `WallpaperWindow.qml` | component | Self-contained background renderer. Spawns one `PanelWindow` at `WlrLayer.Background` per screen internally. Crossfade, parallax, smart video pause |
+| `WallpaperWindow` | component | Self-contained background renderer. Spawns one `PanelWindow` at `WlrLayer.Background` per screen internally. Crossfade, parallax, smart video pause |
 
 ## Adding a new engine subsystem
 

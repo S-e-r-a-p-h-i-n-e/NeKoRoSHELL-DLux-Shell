@@ -77,41 +77,14 @@ Panel {
                         disabledReason: PaletteEngine.unavailableReason
                         onToggled:      (state) => EventBus.toggleTheme(state)
                     }
-                }
+                    Dropdown {
+                    label: "Navbar Position"
+                    currentValue: Config.navbarLocation
+                    options: ["Top", "Bottom", "Left", "Right"]
 
-                Rectangle { width: parent.width; height: 1; color: Colors.color8; opacity: 0.5 }
-
-                // ── Navbar position ───────────────────────────────────────
-                Text {
-                    text:           "Navbar Position"
-                    color:          Colors.foreground
-                    font.family:    Style.barFont
-                    font.pixelSize: 14
-                    font.weight:    Font.Bold
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
-
-                Item {
-                    width:  130
-                    height: 130
-                    anchors.horizontalCenter: parent.horizontalCenter
-
-                    Button { anchors { top: parent.top; horizontalCenter: parent.horizontalCenter }
-                             labelText: "󰁝"; labelFont: Style.barFont
-                             buttonSize: 40; buttonColor: Colors.color7
-                             onButtonClicked: EventBus.changeLocation("top") }
-                    Button { anchors { bottom: parent.bottom; horizontalCenter: parent.horizontalCenter }
-                             labelText: "󰁅"; labelFont: Style.barFont
-                             buttonSize: 40; buttonColor: Colors.color7
-                             onButtonClicked: EventBus.changeLocation("bottom") }
-                    Button { anchors { left: parent.left; verticalCenter: parent.verticalCenter }
-                             labelText: "󰁍"; labelFont: Style.barFont
-                             buttonSize: 40; buttonColor: Colors.color7
-                             onButtonClicked: EventBus.changeLocation("left") }
-                    Button { anchors { right: parent.right; verticalCenter: parent.verticalCenter }
-                             labelText: "󰁔"; labelFont: Style.barFont
-                             buttonSize: 40; buttonColor: Colors.color7
-                             onButtonClicked: EventBus.changeLocation("right") }
+                    // Runs your EventBus action identically to StyleField actions!
+                    onCommitted: (newValue) => { EventBus.changeLocation(newValue.toLowerCase())}
+                    }
                 }
 
                 Rectangle { width: parent.width; height: 1; color: Colors.color8; opacity: 0.5 }

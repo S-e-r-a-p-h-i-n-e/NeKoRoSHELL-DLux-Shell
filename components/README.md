@@ -26,6 +26,7 @@ Used by panels and settings UI. Custom `*View.qml` modules should not depend on 
 | `AnimatedElement`| Panel.qml        | Wraps content with slide/scale/fade entrance animation. Exposes `isSurfaceVisible` so the parent can keep the window alive during exit animation |
 | `Button`         | Settings panels  | Simple text/icon button                                              |
 | `Toggle`         | Settings panel   | On/off toggle row with label and disabled state                      |
+| `Dropdown`       | Settings Panel   | Dropdown toggle with label and selected state
 | `ScreenBorder`   | shell.qml        | Thin decorative border + rounded corners rendered around each screen |
 
 ## Rules
